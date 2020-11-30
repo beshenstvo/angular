@@ -1,0 +1,34 @@
+<div  class="container">
+  <div class="row" style="justify-content: center;">
+    <div class="col-sm-12 col-md-6 col-lg-3 p-2 mb-2" *ngFor="let item of sensor" >
+      <ng-container *ngIf="item.status === false; else elseTemplate">
+        <div style="background-color: red;" class="p-4">
+          <h1>{{ item.id }}</h1>
+          <p>{{ item.name }}</p>
+          <p style="font-size: 10px">{{ item.status }}</p>
+          <button type="button" class="btn btn-dark" (click)="delete(item.id)">Удалить</button>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate >
+        <div style="background-color: green;" class="p-4">
+          <h1>{{ item.id }}</h1>
+          <p>{{ item.name }}</p>
+          <p style="font-size: 10px">{{ item.status }}</p>
+          <button type="button" class="btn btn-dark" (click)="delete(item.id)">Удалить</button>
+        </div>
+      </ng-template>
+       
+     
+    </div>
+  </div>
+  <hr>
+  <div class="row p-3" style="justify-content: center;">
+    <div class="col-6" >
+      <div class="form-group">
+        <label for="card">Введите имя карточки</label>
+        <input type="text" class="form-control" id="card" placeholder="карточка" #cardName>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="add(cardName)">Добавть</button>
+    </div>
+  </div>
+</div>
