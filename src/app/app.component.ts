@@ -75,8 +75,15 @@ export class AppComponent {
   }
   add(event: any){
       console.log('add'+ event.value);
-      var length = this.sensor.length - 1
-      length = this.sensor[length].id + 1
-      this.sensor.push({id: length, name: event.value, status: (Math.random() >= 0.5 ? true : false)})
+      if(this.sensor.length !== 0){
+        var length = this.sensor.length - 1
+        console.log('length '+this.sensor.length);
+        length = this.sensor[length].id + 1
+        console.log('length '+length);
+        this.sensor.push({id: length, name: event.value, status: (Math.random() >= 0.5 ? true : false)})
+      }else{
+        this.sensor.push({id: 1, name: event.value, status: (Math.random() >= 0.5 ? true : false)})
+      }
+     
   }
 }
